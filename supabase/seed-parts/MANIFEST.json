@@ -1,6 +1,6 @@
 {
   "version": "2.1.1",
-  "generated_at": "2026-09-21T05:27:06.162Z",
+  "generated_at": "2026-09-21T05:27:40.449Z",
   "note": "Apply 00-sources.sql first. Other category seeds can be applied independently and re-run safely.",
   "total_records": 481,
   "parts": [
