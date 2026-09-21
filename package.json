@@ -1,0 +1,13 @@
+{
+  "name": "llm-bible-community",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Evidence-first LLM knowledge base with community prompt/result submissions and moderated publishing.",
+  "scripts": {
+    "dev": "node scripts/dev-server.mjs",
+    "check": "node scripts/check.mjs",
+    "build": "npm run check && node scripts/build.mjs",
+    "preview": "node scripts/dev-server.mjs dist 4173"
+  }
+}
