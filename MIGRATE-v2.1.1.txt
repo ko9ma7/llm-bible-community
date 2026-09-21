@@ -1,0 +1,21 @@
+LLM Bible v2.1.1 — 기존 v2.0.x / v2.1.0에서 업그레이드
+
+1. ZIP 내용을 기존 llm-bible-community 폴더에 덮어씁니다.
+2. 최초 1회 백엔드 연결/스키마 설치가 아직 안 됐다면:
+   backend-bootstrap.cmd
+   - 기존 예시 서비스의 동일 Supabase Project URL + Publishable Key를 재사용합니다.
+   - schema.sql은 SQL Editor에서 사용자가 Run해야 합니다.
+   - 관리자 비밀번호는 Supabase Auth에서만 설정합니다.
+3. 연구 데이터를 Supabase DB에도 mirror하고 싶을 때만:
+   seed-category.cmd
+   - Sources를 먼저 1회 실행
+   - Prompt / Skill / Recipe / Failure는 원하는 카테고리만 나눠 실행
+4. 배포:
+   redeploy-pages.cmd
+5. GitHub Actions의 최신 Deploy가 녹색인지 확인한 뒤 Ctrl+F5
+
+중요:
+- 정적 지식 페이지는 DB seed를 하지 않아도 모두 동작합니다.
+- 브라우저는 catalog → 선택한 category JSON만 lazy-load합니다.
+- Prompt/Skill/Recipe/Failure 상세 값은 복사 버튼으로 바로 가져갈 수 있습니다.
+- WebP/WebM은 커뮤니티 업로드 인프라일 뿐 LLM 지식 카테고리에 포함되지 않습니다.

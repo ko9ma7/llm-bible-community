@@ -1,0 +1,42 @@
+LLM Bible Community v2.2.0
+
+현재 프로젝트는 이전 예시 서비스의 browser-safe Supabase 프로젝트 연결값을 재사용하도록 설정되어 있습니다.
+
+1) LLM Bible DB/Auth 관리자 연결 (최초 1회)
+   backend-bootstrap.cmd
+
+   - schema.sql 실행
+   - 41개 Source seed(소형) 선택 실행
+   - 대규모 corpus DB mirror는 seed-category.cmd에서 카테고리별 선택 실행
+   - Auth Redirect URL 추가
+   - 관리자 Auth 사용자 생성/선택
+   - profiles.role = admin 승격
+   - Edge Function 배포 시도
+
+2) 연결 점검
+   verify-backend.cmd
+
+3) 로컬 테스트
+   npm ci
+   npm run dev
+
+4) GitHub Pages 재배포
+   redeploy-pages.cmd
+
+5) 접속
+   홈: https://ko9ma7.github.io/llm-bible-community/#/home
+   계정: https://ko9ma7.github.io/llm-bible-community/#/account
+   관리자: https://ko9ma7.github.io/llm-bible-community/#/admin
+
+Research corpus
+- Prompt 240
+- Skill/Plugin 120
+- MCP/Agent Recipe 50
+- Failure Pattern 30
+- Source 41
+- 18-stage curriculum
+
+주의
+- Supabase publishable key는 브라우저 공개용입니다.
+- sb_secret/service_role/DB password/admin password를 GitHub에 넣지 마세요.
+- WebP/WebM은 커뮤니티 업로드 저장 정책이며 LLM 지식 리서치 카테고리가 아닙니다.
