@@ -1,0 +1,19 @@
+LLM Bible v2.2.2 - first recovery
+
+The screenshot error means public.profiles does not exist yet.
+
+1. Open Supabase SQL Editor.
+2. Open local file: supabase/schema.sql
+3. Copy ALL contents (Ctrl+A, Ctrl+C).
+4. Paste into a NEW SQL query and click Run.
+5. Do not run the admin promotion SQL until the full schema returns success.
+6. Then run setup-permissions.cmd again.
+7. Promote ko9ma7@naver.com only after profiles/submissions verification passes.
+8. Edge Function deploy is optional. If you choose Y, login once with: npx supabase@latest login
+
+Verification SQL:
+select to_regclass('public.profiles') as profiles_table,
+       to_regclass('public.submissions') as submissions_table;
+
+Expected:
+public.profiles | public.submissions

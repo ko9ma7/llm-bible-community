@@ -1,0 +1,1754 @@
+[
+  {
+    "id": "mcp-001",
+    "slug": "mcp-client",
+    "category": "core",
+    "title": "MCP Client",
+    "summary": "클라이언트가 서버의 기능을 발견하고 호출하는 기본 역할",
+    "when_to_use": "여러 서버를 한 앱/에이전트에서 연결할 때",
+    "avoid_when": "단일 함수 하나만 호출하면 되는 단순 앱",
+    "starter_template": "client -> initialize -> list -> call",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-002",
+    "slug": "mcp-server",
+    "category": "core",
+    "title": "MCP Server",
+    "summary": "도구·리소스·프롬프트를 노출하는 실행 단위",
+    "when_to_use": "외부 시스템 접근을 표준 인터페이스로 제공할 때",
+    "avoid_when": "비밀키를 브라우저에 직접 넣는 용도",
+    "starter_template": "server exposes tools/resources/prompts",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-003",
+    "slug": "tool",
+    "category": "core",
+    "title": "Tool",
+    "summary": "모델이 호출할 수 있는 실행 가능한 작업",
+    "when_to_use": "조회·작성·변경 같은 명령형 행동",
+    "avoid_when": "정적 문서 제공만 필요한 경우",
+    "starter_template": "name + description + inputSchema + handler",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-004",
+    "slug": "resource",
+    "category": "core",
+    "title": "Resource",
+    "summary": "읽기 중심의 데이터/문서 컨텍스트",
+    "when_to_use": "파일·문서·스키마를 참조 데이터로 제공할 때",
+    "avoid_when": "부작용이 있는 쓰기 작업",
+    "starter_template": "uri + mimeType + read handler",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-005",
+    "slug": "prompt",
+    "category": "core",
+    "title": "Prompt",
+    "summary": "서버가 제공하는 재사용 가능한 프롬프트 템플릿",
+    "when_to_use": "조직 표준 workflow를 재사용할 때",
+    "avoid_when": "모델 호출 없이 앱 UI만 필요한 경우",
+    "starter_template": "name + arguments + messages",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-006",
+    "slug": "sampling",
+    "category": "core",
+    "title": "Sampling",
+    "summary": "서버가 클라이언트의 모델 추론을 요청하는 패턴",
+    "when_to_use": "도구가 추가 추론을 필요로 할 때",
+    "avoid_when": "서버가 임의로 고비용 추론을 반복할 때",
+    "starter_template": "server -> sampling request -> client policy -> model",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-007",
+    "slug": "elicitation",
+    "category": "core",
+    "title": "Elicitation",
+    "summary": "서버가 사용자에게 추가 입력/동의를 요청하는 흐름",
+    "when_to_use": "필수 정보가 없거나 승인 필요할 때",
+    "avoid_when": "읽기-only 자동 작업",
+    "starter_template": "server requests structured user input",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-008",
+    "slug": "mcp-app",
+    "category": "core",
+    "title": "MCP App",
+    "summary": "도구 결과와 함께 대화형 UI를 제공하는 확장",
+    "when_to_use": "표·폼·미리보기처럼 인터랙션이 중요한 경우",
+    "avoid_when": "텍스트 한 줄이면 충분한 경우",
+    "starter_template": "tool result + sandboxed UI",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-009",
+    "slug": "capability-negotiation",
+    "category": "core",
+    "title": "Capability Negotiation",
+    "summary": "클라이언트/서버가 지원 기능을 초기화 단계에서 합의",
+    "when_to_use": "여러 버전·확장 기능을 호환해야 할 때",
+    "avoid_when": "고정된 사내 프로토콜만 쓰는 일회성 도구",
+    "starter_template": "initialize -> capabilities -> ready",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-010",
+    "slug": "version-negotiation",
+    "category": "core",
+    "title": "Version Negotiation",
+    "summary": "프로토콜 버전을 명시하고 호환 범위를 관리",
+    "when_to_use": "SDK/서버 릴리스가 빠르게 변하는 환경",
+    "avoid_when": "버전을 무시하고 항상 latest만 가정할 때",
+    "starter_template": "pin spec/sdk version + compatibility test",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-011",
+    "slug": "list-discovery",
+    "category": "core",
+    "title": "List Discovery",
+    "summary": "tools/resources/prompts 목록을 발견하는 기본 패턴",
+    "when_to_use": "동적 서버 기능을 탐색해야 할 때",
+    "avoid_when": "도구 목록이 매우 크고 항상 전부 보내는 경우",
+    "starter_template": "list -> filter/cache -> select",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-012",
+    "slug": "stateless-core",
+    "category": "core",
+    "title": "Stateless Core",
+    "summary": "연결 로컬 상태를 최소화하는 서버 설계",
+    "when_to_use": "원격 HTTP 서버를 scale-out할 때",
+    "avoid_when": "세션 상태가 반드시 서버 메모리에 있어야 하는 경우",
+    "starter_template": "request carries identity/context; shared state externalized",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-013",
+    "slug": "json-schema",
+    "category": "tool-design",
+    "title": "좁은 JSON Schema",
+    "summary": "입력 범위를 작게 정의해 잘못된 인자를 줄임",
+    "when_to_use": "구조화된 tool argument가 중요할 때",
+    "avoid_when": "free-form 텍스트가 핵심 입력일 때",
+    "starter_template": "required fields + enums + bounds",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "openai-function"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-014",
+    "slug": "mcp-014",
+    "category": "tool-design",
+    "title": "도구 이름 설계",
+    "summary": "행동과 대상을 이름에서 바로 알 수 있게 함",
+    "when_to_use": "도구 수가 많아 routing이 어려울 때",
+    "avoid_when": "모든 도구를 vague 이름으로 둘 때",
+    "starter_template": "verb_noun, e.g. issue_get / issue_update",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "openai-function"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-015",
+    "slug": "description",
+    "category": "tool-design",
+    "title": "Description 설계",
+    "summary": "언제 호출하고 언제 호출하지 말지 설명",
+    "when_to_use": "비슷한 도구가 여러 개일 때",
+    "avoid_when": "설명에 마케팅 문구만 넣을 때",
+    "starter_template": "purpose + use_when + avoid_when + side_effect",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "openai-function"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-016",
+    "slug": "mcp-016",
+    "category": "tool-design",
+    "title": "읽기/쓰기 분리",
+    "summary": "조회와 변경 도구를 별도화",
+    "when_to_use": "사고로 인한 변경을 줄이고 싶을 때",
+    "avoid_when": "get_or_update처럼 한 도구에 혼합",
+    "starter_template": "read_* vs write_*",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "openai-function"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-017",
+    "slug": "idempotency",
+    "category": "tool-design",
+    "title": "Idempotency",
+    "summary": "재시도해도 중복 부작용이 없게 설계",
+    "when_to_use": "결제·등록·배포 등 쓰기 작업",
+    "avoid_when": "중복 실행이 치명적인데 key가 없을 때",
+    "starter_template": "idempotency_key + operation status",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "openai-function"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-018",
+    "slug": "pagination",
+    "category": "tool-design",
+    "title": "Pagination",
+    "summary": "대량 결과를 페이지 단위로 반환",
+    "when_to_use": "이슈·메일·DB row가 많은 경우",
+    "avoid_when": "수천 건을 한 번에 LLM에 넣을 때",
+    "starter_template": "cursor + limit + next_cursor",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "openai-function"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-019",
+    "slug": "result-compression",
+    "category": "tool-design",
+    "title": "Result Compression",
+    "summary": "도구 결과를 필요한 필드만 반환",
+    "when_to_use": "토큰·지연을 줄여야 할 때",
+    "avoid_when": "raw API 응답을 그대로 모델에 줄 때",
+    "starter_template": "summary + ids + critical fields",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "openai-function"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-020",
+    "slug": "error-taxonomy",
+    "category": "tool-design",
+    "title": "Error Taxonomy",
+    "summary": "재시도 가능/불가 오류를 구분",
+    "when_to_use": "자동 복구 로직이 필요한 경우",
+    "avoid_when": "모든 오류를 문자열 하나로 반환",
+    "starter_template": "code + retryable + user_action",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "openai-function"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-021",
+    "slug": "retry-budget",
+    "category": "tool-design",
+    "title": "Retry Budget",
+    "summary": "무한 tool loop를 막는 제한",
+    "when_to_use": "외부 API가 불안정할 때",
+    "avoid_when": "같은 실패를 계속 반복할 때",
+    "starter_template": "max_attempts + backoff + fallback",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "openai-function"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-022",
+    "slug": "timeout",
+    "category": "tool-design",
+    "title": "Timeout",
+    "summary": "도구 호출 상한 시간을 정의",
+    "when_to_use": "느린 외부 서비스 연결",
+    "avoid_when": "무제한 대기",
+    "starter_template": "timeout_ms + cancel",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "openai-function"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-023",
+    "slug": "parallel-calls",
+    "category": "tool-design",
+    "title": "Parallel Calls",
+    "summary": "독립 조회를 병렬 실행",
+    "when_to_use": "여러 읽기 도구가 서로 독립적일 때",
+    "avoid_when": "순서 의존 쓰기 작업",
+    "starter_template": "parallel only for independent read calls",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "openai-function"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-024",
+    "slug": "confirmation-gate",
+    "category": "tool-design",
+    "title": "Confirmation Gate",
+    "summary": "위험 행동 직전에 사용자 확인",
+    "when_to_use": "삭제·결제·외부 전송·게시",
+    "avoid_when": "읽기-only 조회",
+    "starter_template": "preview changes -> confirm -> execute",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "openai-function"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-025",
+    "slug": "oauth-scope",
+    "category": "security",
+    "title": "OAuth Scope 최소화",
+    "summary": "필요한 API 권한만 요청",
+    "when_to_use": "원격 SaaS MCP",
+    "avoid_when": "관리자 전체 권한을 기본 요청",
+    "starter_template": "read scope first; write scope on demand",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "anthropic-mcp"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-026",
+    "slug": "least-privilege",
+    "category": "security",
+    "title": "Least Privilege",
+    "summary": "업무에 필요한 최소 도구/경로만 노출",
+    "when_to_use": "파일·DB·클라우드 연결",
+    "avoid_when": "루트 파일시스템/전체 DB 노출",
+    "starter_template": "allowlist resources and actions",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "anthropic-mcp"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-027",
+    "slug": "identity-propagation",
+    "category": "security",
+    "title": "Identity Propagation",
+    "summary": "최종 사용자 정체성을 서버까지 전달",
+    "when_to_use": "사용자별 데이터 접근",
+    "avoid_when": "모든 요청을 하나의 공유 관리자 계정으로 실행",
+    "starter_template": "user subject + tenant context",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "anthropic-mcp"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-028",
+    "slug": "secret-isolation",
+    "category": "security",
+    "title": "Secret Isolation",
+    "summary": "API key를 모델 context와 브라우저에서 분리",
+    "when_to_use": "서버 인증이 필요한 도구",
+    "avoid_when": "프롬프트에 secret 삽입",
+    "starter_template": "server-side secret store",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "anthropic-mcp"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-029",
+    "slug": "prompt-injection-boundary",
+    "category": "security",
+    "title": "Prompt Injection Boundary",
+    "summary": "도구 결과의 텍스트를 명령이 아닌 데이터로 취급",
+    "when_to_use": "웹·메일·문서 등 신뢰 불가 입력",
+    "avoid_when": "검색 결과의 지시문을 그대로 실행",
+    "starter_template": "untrusted content boundary + policy",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "anthropic-mcp"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-030",
+    "slug": "data-exfiltration-guard",
+    "category": "security",
+    "title": "Data Exfiltration Guard",
+    "summary": "외부 전송 전에 데이터 범위를 검사",
+    "when_to_use": "메일·Slack·웹훅 전송",
+    "avoid_when": "문서 전체를 무검사 전송",
+    "starter_template": "classify data + destination allowlist",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "anthropic-mcp"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-031",
+    "slug": "sandbox",
+    "category": "security",
+    "title": "Sandbox",
+    "summary": "코드/파일 실행 권한을 격리",
+    "when_to_use": "코드 실행·변환 도구",
+    "avoid_when": "호스트 OS 전체 권한",
+    "starter_template": "container/VM + resource limits",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "anthropic-mcp"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-032",
+    "slug": "human-approval",
+    "category": "security",
+    "title": "Human Approval",
+    "summary": "고위험 작업에 사람 승인",
+    "when_to_use": "삭제·게시·결제·권한 변경",
+    "avoid_when": "순수 읽기/요약",
+    "starter_template": "show exact action before commit",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "anthropic-mcp"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-033",
+    "slug": "audit-log",
+    "category": "security",
+    "title": "Audit Log",
+    "summary": "누가 무엇을 호출했는지 기록",
+    "when_to_use": "관리자·기업 환경",
+    "avoid_when": "로그 없이 쓰기 도구 운영",
+    "starter_template": "actor + tool + args hash + outcome",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "anthropic-mcp"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-034",
+    "slug": "tenant-isolation",
+    "category": "security",
+    "title": "Tenant Isolation",
+    "summary": "조직/프로젝트 경계를 강제",
+    "when_to_use": "멀티테넌트 SaaS",
+    "avoid_when": "tenant id를 모델이 임의 결정",
+    "starter_template": "server derives tenant from auth",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "anthropic-mcp"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-035",
+    "slug": "rate-limit",
+    "category": "security",
+    "title": "Rate Limit",
+    "summary": "남용·루프·비용 폭증을 제한",
+    "when_to_use": "공개/사용자 도구",
+    "avoid_when": "무제한 호출",
+    "starter_template": "per-user/tool quota",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "anthropic-mcp"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-036",
+    "slug": "output-sanitization",
+    "category": "security",
+    "title": "Output Sanitization",
+    "summary": "도구 결과를 UI/모델로 전달 전 정규화",
+    "when_to_use": "HTML·Markdown·파일 메타데이터",
+    "avoid_when": "외부 HTML을 그대로 렌더링",
+    "starter_template": "escape/sanitize + size limit",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "anthropic-mcp"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-037",
+    "slug": "stdio",
+    "category": "transport",
+    "title": "stdio 로컬 서버",
+    "summary": "프로세스 표준입출력으로 로컬 도구 연결",
+    "when_to_use": "개발자 머신의 파일/CLI",
+    "avoid_when": "원격 다중 사용자 SaaS",
+    "starter_template": "client spawns server process",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-038",
+    "slug": "streamable-http",
+    "category": "transport",
+    "title": "Streamable HTTP",
+    "summary": "원격 MCP 서버를 HTTP 기반으로 연결",
+    "when_to_use": "SaaS·팀 공용 서버",
+    "avoid_when": "로컬 단일 프로세스만 필요한 경우",
+    "starter_template": "HTTPS endpoint + auth",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-039",
+    "slug": "stateless-scale-out",
+    "category": "transport",
+    "title": "Stateless Scale-out",
+    "summary": "인스턴스 로컬 세션 의존을 줄임",
+    "when_to_use": "오토스케일/서버리스",
+    "avoid_when": "세션 상태를 메모리에만 보관",
+    "starter_template": "external session/data store",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-040",
+    "slug": "health-check",
+    "category": "transport",
+    "title": "Health Check",
+    "summary": "서버 준비 상태를 별도 확인",
+    "when_to_use": "운영 배포",
+    "avoid_when": "실패 후에만 장애를 인지",
+    "starter_template": "health/readiness endpoint",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-041",
+    "slug": "origin-validation",
+    "category": "transport",
+    "title": "Origin Validation",
+    "summary": "원격 웹 연결의 출처를 검증",
+    "when_to_use": "브라우저·프록시 경유 환경",
+    "avoid_when": "모든 Origin 허용",
+    "starter_template": "explicit allowed origins",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-042",
+    "slug": "proxy-gateway",
+    "category": "transport",
+    "title": "Proxy/Gateway",
+    "summary": "여러 MCP 서버를 정책 게이트 뒤에 통합",
+    "when_to_use": "기업용 중앙 관리",
+    "avoid_when": "각 클라이언트가 제각각 secret 보관",
+    "starter_template": "gateway auth + routing + audit",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-043",
+    "slug": "observability",
+    "category": "transport",
+    "title": "Observability",
+    "summary": "호출 시간·오류·사용량을 추적",
+    "when_to_use": "운영 환경",
+    "avoid_when": "성공 여부만 로그",
+    "starter_template": "trace_id + latency + tool + outcome",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-044",
+    "slug": "backpressure",
+    "category": "transport",
+    "title": "Backpressure",
+    "summary": "동시 요청과 큐 길이를 제한",
+    "when_to_use": "고부하 서버",
+    "avoid_when": "과부하 시 무제한 수락",
+    "starter_template": "concurrency limit + queue",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-045",
+    "slug": "list-result-cache",
+    "category": "transport",
+    "title": "List Result Cache",
+    "summary": "도구/리소스 목록을 적절히 캐시",
+    "when_to_use": "목록이 자주 안 바뀔 때",
+    "avoid_when": "매 요청마다 큰 목록 전송",
+    "starter_template": "cache with invalidation/version",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-046",
+    "slug": "deployment-version-pin",
+    "category": "transport",
+    "title": "Deployment Version Pin",
+    "summary": "SDK/서버 버전을 고정",
+    "when_to_use": "재현 가능한 운영",
+    "avoid_when": "latest 자동 업데이트",
+    "starter_template": "lockfile + release notes + tests",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-047",
+    "slug": "graceful-shutdown",
+    "category": "transport",
+    "title": "Graceful Shutdown",
+    "summary": "진행 중 작업을 마무리하고 종료",
+    "when_to_use": "배포 롤링 업데이트",
+    "avoid_when": "프로세스 강제 종료",
+    "starter_template": "stop accepting -> drain -> exit",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-048",
+    "slug": "multi-region-consideration",
+    "category": "transport",
+    "title": "Multi-region Consideration",
+    "summary": "데이터 위치·지연을 고려한 서버 배치",
+    "when_to_use": "글로벌 사용자/규제 데이터",
+    "avoid_when": "모든 데이터를 임의 지역으로 복제",
+    "starter_template": "region-aware routing",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "mcp-spec",
+      "mcp-ts",
+      "mcp-py"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-049",
+    "slug": "filesystem-read-only",
+    "category": "integrations",
+    "title": "Filesystem Read-only",
+    "summary": "지정 폴더 문서를 읽는 서버",
+    "when_to_use": "로컬 지식/코드 탐색",
+    "avoid_when": "전체 디스크 쓰기 권한",
+    "starter_template": "root allowlist + read_only",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-050",
+    "slug": "filesystem-write",
+    "category": "integrations",
+    "title": "Filesystem Write",
+    "summary": "승인된 경로에 파일 생성/수정",
+    "when_to_use": "자동 문서/코드 생성",
+    "avoid_when": "사용자 홈 전체 쓰기",
+    "starter_template": "workspace-only + confirmation",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-051",
+    "slug": "github",
+    "category": "integrations",
+    "title": "GitHub",
+    "summary": "Issue·PR·코드 조회/수정",
+    "when_to_use": "개발 workflow",
+    "avoid_when": "repo 관리자 권한 상시 부여",
+    "starter_template": "repo scope + read/write split",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-052",
+    "slug": "database-read-only",
+    "category": "integrations",
+    "title": "Database Read-only",
+    "summary": "스키마·SELECT 분석",
+    "when_to_use": "데이터 질의/BI",
+    "avoid_when": "임의 DDL/DML 허용",
+    "starter_template": "read-only role + statement timeout",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-053",
+    "slug": "database-write",
+    "category": "integrations",
+    "title": "Database Write",
+    "summary": "승인된 mutation 실행",
+    "when_to_use": "CRM/업무 DB 변경",
+    "avoid_when": "모델이 raw SQL로 전체 DB 수정",
+    "starter_template": "stored procedures + validation",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-054",
+    "slug": "browser-search",
+    "category": "integrations",
+    "title": "Browser/Search",
+    "summary": "웹 탐색·검색 결과 수집",
+    "when_to_use": "최신 정보 조사",
+    "avoid_when": "페이지의 지시를 시스템 명령으로 취급",
+    "starter_template": "content as untrusted data",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-055",
+    "slug": "slack-jira",
+    "category": "integrations",
+    "title": "Slack/Jira",
+    "summary": "메시지·티켓 조회와 생성",
+    "when_to_use": "팀 업무 자동화",
+    "avoid_when": "자동 대량 전송/수정",
+    "starter_template": "channel/project allowlist + confirm write",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-056",
+    "slug": "figma-design",
+    "category": "integrations",
+    "title": "Figma/Design",
+    "summary": "프레임·컴포넌트 메타데이터 접근",
+    "when_to_use": "디자인→개발",
+    "avoid_when": "전체 파일 삭제/수정 권한",
+    "starter_template": "read first + targeted write",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-057",
+    "slug": "calendar-email",
+    "category": "integrations",
+    "title": "Calendar/Email",
+    "summary": "일정·메일 검색과 작성",
+    "when_to_use": "개인/업무 보조",
+    "avoid_when": "자동 발송을 기본값으로",
+    "starter_template": "draft first + send confirmation",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-058",
+    "slug": "cloud-deploy",
+    "category": "integrations",
+    "title": "Cloud/Deploy",
+    "summary": "빌드·배포 상태 조회/실행",
+    "when_to_use": "DevOps agent",
+    "avoid_when": "production deploy 무승인",
+    "starter_template": "environment gate + approvals",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-059",
+    "slug": "observability",
+    "category": "integrations",
+    "title": "Observability",
+    "summary": "Sentry/로그/메트릭 조회",
+    "when_to_use": "장애 triage",
+    "avoid_when": "민감 로그 전체 노출",
+    "starter_template": "redaction + time window",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-060",
+    "slug": "crm",
+    "category": "integrations",
+    "title": "CRM",
+    "summary": "고객/리드 조회 및 업데이트",
+    "when_to_use": "영업 지원",
+    "avoid_when": "대량 데이터 수정",
+    "starter_template": "field allowlist + audit",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-061",
+    "slug": "research-agent",
+    "category": "workflows",
+    "title": "Research Agent",
+    "summary": "검색→출처 수집→비교→검증",
+    "when_to_use": "최신·다중 출처 조사",
+    "avoid_when": "출처 없는 단순 창작",
+    "starter_template": "search tools + source registry + verifier",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-062",
+    "slug": "coding-agent",
+    "category": "workflows",
+    "title": "Coding Agent",
+    "summary": "repo 탐색→수정→테스트→diff 검토",
+    "when_to_use": "버그 수정/PR",
+    "avoid_when": "테스트 없이 직접 main 반영",
+    "starter_template": "read repo -> branch -> patch -> test -> review",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-063",
+    "slug": "incident-triage",
+    "category": "workflows",
+    "title": "Incident Triage",
+    "summary": "알림→로그→최근 배포→가설→조치",
+    "when_to_use": "장애 대응",
+    "avoid_when": "고위험 조치를 자동 실행",
+    "starter_template": "read-only first + escalation",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-064",
+    "slug": "document-qa",
+    "category": "workflows",
+    "title": "Document QA",
+    "summary": "문서 검색→근거 추출→답변→citation",
+    "when_to_use": "정책/계약/매뉴얼 QA",
+    "avoid_when": "근거 없는 일반 지식 혼합",
+    "starter_template": "retrieve -> quote ids -> answer",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-065",
+    "slug": "rag-retrieval-tool",
+    "category": "workflows",
+    "title": "RAG Retrieval Tool",
+    "summary": "query rewrite→retrieve→rerank→context",
+    "when_to_use": "사내/최신 지식",
+    "avoid_when": "전체 문서 통째 주입",
+    "starter_template": "top-k + rerank + citation",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-066",
+    "slug": "planner-executor",
+    "category": "workflows",
+    "title": "Planner→Executor",
+    "summary": "계획과 실행 역할을 분리",
+    "when_to_use": "복잡한 다단계 작업",
+    "avoid_when": "간단한 단일 호출",
+    "starter_template": "plan steps -> execute -> verify",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-067",
+    "slug": "router-specialist",
+    "category": "workflows",
+    "title": "Router→Specialist",
+    "summary": "요청을 전문 도구/모델로 분기",
+    "when_to_use": "업무 유형이 다양한 서비스",
+    "avoid_when": "항상 가장 비싼 모델 사용",
+    "starter_template": "classify -> route -> fallback",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-068",
+    "slug": "human-in-the-loop",
+    "category": "workflows",
+    "title": "Human-in-the-loop",
+    "summary": "중간 결과를 사람에게 보여 승인",
+    "when_to_use": "위험한 쓰기 작업",
+    "avoid_when": "순수 읽기/요약",
+    "starter_template": "preview -> approve -> act",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-069",
+    "slug": "multi-server-orchestration",
+    "category": "workflows",
+    "title": "Multi-server Orchestration",
+    "summary": "여러 MCP 서버를 조합",
+    "when_to_use": "GitHub+Jira+Slack 같은 workflow",
+    "avoid_when": "모든 서버 권한을 한꺼번에 열기",
+    "starter_template": "per-step server/tool allowlist",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-070",
+    "slug": "tool-fallback",
+    "category": "workflows",
+    "title": "Tool Fallback",
+    "summary": "기본 도구 실패 시 대체 경로",
+    "when_to_use": "API 장애 대응",
+    "avoid_when": "같은 실패 무한 재시도",
+    "starter_template": "retry once -> fallback -> surface status",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-071",
+    "slug": "result-verifier",
+    "category": "workflows",
+    "title": "Result Verifier",
+    "summary": "도구 결과와 최종 답을 교차검증",
+    "when_to_use": "정확성 중요 업무",
+    "avoid_when": "검증 불가능한 창작",
+    "starter_template": "schema + evidence + consistency checks",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  },
+  {
+    "id": "mcp-072",
+    "slug": "cost-aware-routing",
+    "category": "workflows",
+    "title": "Cost-aware Routing",
+    "summary": "쉬운 요청은 작은 모델/도구로 처리",
+    "when_to_use": "대량 요청/비용 민감 서비스",
+    "avoid_when": "고품질이 절대 우선인 소량 핵심 작업",
+    "starter_template": "cheap path -> confidence -> escalate",
+    "checklist": [
+      "도구/리소스가 정말 필요한지 먼저 확인",
+      "읽기와 쓰기 권한을 분리",
+      "입력 스키마와 실패 조건을 명확히 정의",
+      "위험한 행동은 사용자 확인 후 실행",
+      "로그·재시도·비용 상한을 운영 지표로 남기기"
+    ],
+    "evidence_level": "Official concept + production starter",
+    "source_refs": [
+      "anthropic-mcp",
+      "mcp-spec"
+    ],
+    "last_verified": "2026-09-21",
+    "status": "starter"
+  }
+]

@@ -1,0 +1,45 @@
+LLM Bible Community v2.3.0
+
+현재 상태에서 가장 먼저 할 일
+==========================
+
+1) DB + 권한 설정 (최초 1회 / 스키마 업그레이드 때 재실행 가능)
+   setup-permissions.cmd
+
+   이 스크립트가 순서대로 안내합니다.
+   - supabase/schema.sql 설치
+   - public.submissions 존재 여부 확인
+   - Supabase Auth Site URL / Redirect URL 확인
+   - 일반 user 또는 admin 권한 선택
+   - 관리자 승격 SQL 생성
+   - moderate-submission Edge Function 배포 선택
+
+2) GitHub Pages 재배포
+   redeploy-pages.cmd
+
+3) 사이트 접속
+   https://ko9ma7.github.io/llm-bible-community/#/account
+
+4) 리서치 DB mirror는 선택 사항
+   seed-category.cmd
+
+   정적 웹은 DB seed 없이도 지식 데이터를 표시합니다.
+   필요할 때만 Sources / Prompt / Skill / MCP / Recipe / Failure를 나눠 적재하세요.
+
+현재 정적 corpus
+- Prompt 240
+- Skill / Plugin 120
+- MCP / Tool starter 72
+- Agent / Practical Recipe 50
+- Failure Pattern 30
+- Source 41
+
+권한
+- user  : 사례 제출 + 자기 제출 상태
+- admin : user 기능 + 관리자 검수 + 공개/보관/폐기
+
+중요
+- 로그인 성공인데 `public.submissions` 오류가 나오면 DB schema 미설치 상태입니다.
+- 관리자 비밀번호는 DB 일반 테이블에 저장하지 않습니다. Supabase Auth가 관리합니다.
+- `profiles.role`만 user/admin을 구분합니다.
+- 기존 인증 메일이 localhost로 가면 URL Configuration 수정 후 새 인증 메일을 보내야 합니다.

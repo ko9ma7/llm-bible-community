@@ -1,0 +1,21 @@
+LLM Bible v2.3.0 UI/Responsive 적용 순서
+
+1. v2.3.0 패치 ZIP을 현재 llm-bible-community 폴더에 덮어씁니다.
+2. 기존 .env와 Supabase 설정은 유지합니다.
+3. redeploy-pages.cmd 를 실행합니다.
+4. GitHub Actions의 Pages 배포가 초록색이 될 때까지 기다립니다.
+5. PC에서 Ctrl+F5 후 확인합니다.
+6. 모바일에서도 새로고침 후 확인합니다.
+
+주요 UI 변경
+- 데스크톱 전체 지도: 2열 고밀도 카드
+- 섹션 상하 여백 축소 및 spacing system 통일
+- Prompt/Skill/MCP/Recipe 탐색 화면: sidebar + content 관계 강화
+- 상세보기: 오른쪽 reading drawer 유지, 폭/패딩 최적화
+- 모바일: 2열 메뉴 -> 1열 콘텐츠, 가로 스크롤 방지
+- 320/375/560/820/1080+ 반응형 breakpoint 강화
+- 누락된 --border / --surface-soft 등의 디자인 토큰 보완
+
+주의
+- v2.3.0은 UI/반응형 개선이 중심입니다.
+- Supabase DB 스키마/관리자 설정은 기존 데이터를 삭제하지 않습니다.
