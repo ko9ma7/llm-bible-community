@@ -1,0 +1,272 @@
+{
+  "version": "2.2.1",
+  "generated_at": "2026-09-21T06:02:15.799Z",
+  "note": "Apply 00-sources.sql first. Other category seeds can be applied independently and re-run safely.",
+  "total_records": 553,
+  "parts": [
+    {
+      "file": "00-sources.sql",
+      "collection": "sources",
+      "count": 41,
+      "bytes": 15505
+    },
+    {
+      "file": "10-prompt-few-shot.sql",
+      "collection": "prompts",
+      "count": 20,
+      "bytes": 78297
+    },
+    {
+      "file": "10-prompt-instruction.sql",
+      "collection": "prompts",
+      "count": 20,
+      "bytes": 67824
+    },
+    {
+      "file": "10-prompt-long-context.sql",
+      "collection": "prompts",
+      "count": 20,
+      "bytes": 72301
+    },
+    {
+      "file": "10-prompt-multi-stage.sql",
+      "collection": "prompts",
+      "count": 20,
+      "bytes": 72160
+    },
+    {
+      "file": "10-prompt-quick.sql",
+      "collection": "prompts",
+      "count": 20,
+      "bytes": 64314
+    },
+    {
+      "file": "10-prompt-rag.sql",
+      "collection": "prompts",
+      "count": 20,
+      "bytes": 71732
+    },
+    {
+      "file": "10-prompt-reasoning.sql",
+      "collection": "prompts",
+      "count": 20,
+      "bytes": 69678
+    },
+    {
+      "file": "10-prompt-safety.sql",
+      "collection": "prompts",
+      "count": 20,
+      "bytes": 71335
+    },
+    {
+      "file": "10-prompt-structured.sql",
+      "collection": "prompts",
+      "count": 20,
+      "bytes": 71699
+    },
+    {
+      "file": "10-prompt-system.sql",
+      "collection": "prompts",
+      "count": 20,
+      "bytes": 72779
+    },
+    {
+      "file": "10-prompt-tool.sql",
+      "collection": "prompts",
+      "count": 20,
+      "bytes": 75593
+    },
+    {
+      "file": "10-prompt-verification.sql",
+      "collection": "prompts",
+      "count": 20,
+      "bytes": 72461
+    },
+    {
+      "file": "30-skill-business.sql",
+      "collection": "skills",
+      "count": 10,
+      "bytes": 19054
+    },
+    {
+      "file": "30-skill-connectors.sql",
+      "collection": "skills",
+      "count": 10,
+      "bytes": 19146
+    },
+    {
+      "file": "30-skill-content.sql",
+      "collection": "skills",
+      "count": 10,
+      "bytes": 19103
+    },
+    {
+      "file": "30-skill-data.sql",
+      "collection": "skills",
+      "count": 10,
+      "bytes": 19120
+    },
+    {
+      "file": "30-skill-documents.sql",
+      "collection": "skills",
+      "count": 10,
+      "bytes": 19020
+    },
+    {
+      "file": "30-skill-education.sql",
+      "collection": "skills",
+      "count": 10,
+      "bytes": 18945
+    },
+    {
+      "file": "30-skill-operations.sql",
+      "collection": "skills",
+      "count": 10,
+      "bytes": 19161
+    },
+    {
+      "file": "30-skill-product.sql",
+      "collection": "skills",
+      "count": 10,
+      "bytes": 18974
+    },
+    {
+      "file": "30-skill-research.sql",
+      "collection": "skills",
+      "count": 10,
+      "bytes": 19159
+    },
+    {
+      "file": "30-skill-security.sql",
+      "collection": "skills",
+      "count": 10,
+      "bytes": 19194
+    },
+    {
+      "file": "30-skill-software.sql",
+      "collection": "skills",
+      "count": 10,
+      "bytes": 19215
+    },
+    {
+      "file": "30-skill-support.sql",
+      "collection": "skills",
+      "count": 10,
+      "bytes": 18978
+    },
+    {
+      "file": "40-mcp-core.sql",
+      "collection": "mcp",
+      "count": 12,
+      "bytes": 14877
+    },
+    {
+      "file": "40-mcp-integrations.sql",
+      "collection": "mcp",
+      "count": 12,
+      "bytes": 13956
+    },
+    {
+      "file": "40-mcp-security.sql",
+      "collection": "mcp",
+      "count": 12,
+      "bytes": 14300
+    },
+    {
+      "file": "40-mcp-tool-design.sql",
+      "collection": "mcp",
+      "count": 12,
+      "bytes": 14459
+    },
+    {
+      "file": "40-mcp-transport.sql",
+      "collection": "mcp",
+      "count": 12,
+      "bytes": 14219
+    },
+    {
+      "file": "40-mcp-workflows.sql",
+      "collection": "mcp",
+      "count": 12,
+      "bytes": 14235
+    },
+    {
+      "file": "50-recipe-agent-architecture.sql",
+      "collection": "recipes",
+      "count": 5,
+      "bytes": 7471
+    },
+    {
+      "file": "50-recipe-coding-software.sql",
+      "collection": "recipes",
+      "count": 8,
+      "bytes": 11838
+    },
+    {
+      "file": "50-recipe-optimization-eval.sql",
+      "collection": "recipes",
+      "count": 9,
+      "bytes": 13278
+    },
+    {
+      "file": "50-recipe-rag-grounding.sql",
+      "collection": "recipes",
+      "count": 3,
+      "bytes": 4468
+    },
+    {
+      "file": "50-recipe-research-data.sql",
+      "collection": "recipes",
+      "count": 9,
+      "bytes": 13129
+    },
+    {
+      "file": "50-recipe-security-safety.sql",
+      "collection": "recipes",
+      "count": 5,
+      "bytes": 7537
+    },
+    {
+      "file": "50-recipe-workflow-ops.sql",
+      "collection": "recipes",
+      "count": 11,
+      "bytes": 16072
+    },
+    {
+      "file": "70-failure-cost-performance.sql",
+      "collection": "failures",
+      "count": 2,
+      "bytes": 2048
+    },
+    {
+      "file": "70-failure-evaluation-reliability.sql",
+      "collection": "failures",
+      "count": 6,
+      "bytes": 5986
+    },
+    {
+      "file": "70-failure-prompt-context.sql",
+      "collection": "failures",
+      "count": 6,
+      "bytes": 6164
+    },
+    {
+      "file": "70-failure-rag-grounding.sql",
+      "collection": "failures",
+      "count": 6,
+      "bytes": 5971
+    },
+    {
+      "file": "70-failure-security-permission.sql",
+      "collection": "failures",
+      "count": 4,
+      "bytes": 4105
+    },
+    {
+      "file": "70-failure-tools-agents.sql",
+      "collection": "failures",
+      "count": 6,
+      "bytes": 6057
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+project_id = "llm-bible-community"
+
+[functions.moderate-submission]
+verify_jwt = true

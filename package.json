@@ -1,0 +1,14 @@
+{
+  "name": "llm-bible-community",
+  "version": "2.2.1",
+  "private": true,
+  "type": "module",
+  "description": "Research-backed LLM Bible with category-first lazy data, 72 MCP/tool starters, copy-ready prompt/skill/recipe records, Supabase Auth and guided RLS/admin setup.",
+  "scripts": {
+    "data": "node scripts/generate-corpus-shards.mjs && node scripts/generate-seed-parts.mjs",
+    "dev": "npm run data && node scripts/dev-server.mjs",
+    "check": "node scripts/check.mjs",
+    "build": "npm run data && npm run check && node scripts/build.mjs",
+    "preview": "node scripts/dev-server.mjs dist 4173"
+  }
+}

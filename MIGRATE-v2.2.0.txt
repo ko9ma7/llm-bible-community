@@ -1,0 +1,21 @@
+LLM Bible v2.2.0 적용 순서
+
+1) v2.2.0 patch ZIP을 현재 llm-bible-community 폴더에 덮어쓰기
+2) redeploy-pages.cmd 실행
+3) GitHub Actions의 최신 Deploy가 초록색인지 확인
+4) 브라우저에서 Ctrl+F5
+
+이메일 인증이 "Email not confirmed"인 경우
+1) 현재 가입한 이메일 받은편지함 / 스팸함 확인
+2) Supabase 인증 메일의 확인 링크 클릭
+3) LLM Bible #/account 로 돌아와 로그인
+4) 메일이 없으면 v2.2.0 계정 화면의 "인증 메일 다시 보내기" 버튼 사용
+
+Community DB가 아직 준비되지 않았다면
+- backend-bootstrap.cmd 실행
+- Supabase SQL Editor에서 schema.sql 1회 적용
+- 관리자는 ADMIN_SETUP.md 순서대로 role 승격
+
+주의
+- Supabase URL / publishable key는 그대로 유지됩니다.
+- 기존 사용자 / DB 데이터 / Storage는 삭제하지 않습니다.

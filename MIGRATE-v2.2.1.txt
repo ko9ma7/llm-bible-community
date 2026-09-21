@@ -1,0 +1,19 @@
+LLM Bible v2.2.1 적용 순서
+
+1. v2.2.1 패치 ZIP을 현재 llm-bible-community 폴더에 덮어쓰기
+2. setup-permissions.cmd 실행
+3. 열린 Supabase SQL Editor에서 schema.sql Run
+4. URL Configuration에서 Site URL/Redirect URL 확인
+5. 관리자 계정으로 쓸 이메일을 입력하고 생성된 승격 SQL Run
+6. redeploy-pages.cmd 실행
+7. GitHub Actions 최신 배포가 초록색이 된 뒤 Ctrl+F5
+8. #/account에서 권한이 admin인지 확인
+
+이번 버전 핵심
+- public.submissions 등 필수 테이블을 모두 진단
+- raw schema-cache 오류 대신 설치 안내 표시
+- 관리자 승격 SQL을 계정 화면과 CMD에서 제공
+- 인증 redirect를 production URL 기준으로 생성
+- MCP/Tool Calling starter 72개 추가
+- 전체 지도 분류를 접기/펼치기로 변경
+- 분류 틀 대폭 확장
