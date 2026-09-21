@@ -1,0 +1,26 @@
+LLM Bible GitHub Pages v2.0.2 fix
+
+증상:
+- "본문으로 건너뛰기"
+- "LLM Bible을 불러오는 중입니다."
+만 보이고 실제 UI가 나타나지 않음
+
+원인:
+- v2.0.1의 src/main.js가 CSS를 native JavaScript module import로 불러옴.
+- GitHub Pages는 styles.css를 text/css로 제공하므로 브라우저가 JS module로 실행할 수 없어 main.js 초기화가 중단됨.
+
+수정:
+- CSS를 index.html의 <link rel="stylesheet">로 로드
+- main.js의 CSS import 제거
+- 재발 방지 static check 추가
+- 앱 부팅 실패 시 화면에 진단 메시지 표시
+- Supabase placeholder를 실제 연결로 오인하지 않도록 판별 강화
+
+적용:
+1) 이 패치를 프로젝트 루트에 덮어쓰기
+2) redeploy-pages.cmd 실행 (또는 github-bootstrap.cmd 재실행)
+3) GitHub Actions의 Pages 배포가 완료될 때까지 대기
+4) https://USERNAME.github.io/llm-bible-community/ 에서 Ctrl+F5
+
+Supabase를 설정하지 않아도 홈/지식 라이브러리는 정상 표시됩니다.
+로그인/업로드/admin 기능에만 Supabase 설정이 필요합니다.

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko" data-theme="system">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LLM Bible — 검증형 AI·LLM 지식과 프롬프트 커뮤니티</title>
+  <meta name="description" content="최신성·근거·실제 예시 중심의 LLM 지식베이스. 사용자가 프롬프트와 결과를 공유하고 관리자가 검수해 공개합니다." />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="./assets/favicon-32x32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="stylesheet" href="./src/styles.css?v=2.0.3" />
+  <link rel="canonical" href="__SITE_URL__/" />
+  <meta property="og:title" content="LLM Bible — 검증형 AI·LLM 지식과 프롬프트 커뮤니티" />
+  <meta property="og:description" content="개념→예시→근거→검증과 커뮤니티 프롬프트 결과를 함께 보는 LLM 바이블." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="__SITE_URL__/" />
+  <meta property="og:image" content="__SITE_URL__/assets/og-image.png" />
+  <meta property="og:site_name" content="LLM Bible" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="LLM Bible" />
+  <meta name="twitter:description" content="근거 중심 LLM 지식 + 검수형 프롬프트 공유 커뮤니티" />
+  <meta name="twitter:image" content="__SITE_URL__/assets/og-image.png" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"LLM Bible","applicationCategory":"EducationalApplication","inLanguage":"ko-KR"}
+  </script>
+  <script src="./config.js?v=2.0.3"></script>
+  <script src="./data/knowledge.js?v=2.0.3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <a id="skipToMain" class="skip-link" href="#/home">본문으로 건너뛰기</a>
+  <div id="app"><div class="boot-screen"><div class="spinner"></div><p>LLM Bible을 불러오는 중입니다.</p></div></div>
+  <div id="toastRoot" class="toast-root" aria-live="polite" aria-atomic="true"></div>
+  <script>
+    window.__LLM_BIBLE_BOOTED__ = false;
+    window.addEventListener('error', (event) => {
+      const app = document.getElementById('app');
+      if (!window.__LLM_BIBLE_BOOTED__ && app) {
+        const message = event?.message || '정적 자산을 불러오지 못했습니다.';
+        app.innerHTML = `<main style="max-width:860px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif"><h1>LLM Bible 로딩 오류</h1><p>페이지 파일은 배포되었지만 앱 JavaScript를 실행하지 못했습니다.</p><pre style="white-space:pre-wrap;background:#111827;color:#f9fafb;padding:16px;border-radius:12px">${String(message).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}</pre><p>GitHub Actions의 최신 배포가 완료되었는지 확인한 뒤 새로고침해 주세요.</p></main>`;
+      }
+    }, true);
+    setTimeout(() => {
+      const app = document.getElementById('app');
+      if (!window.__LLM_BIBLE_BOOTED__ && app && app.textContent.includes('불러오는 중')) {
+        app.innerHTML = '<main style="max-width:860px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif"><h1>LLM Bible 로딩 지연</h1><p>JavaScript 모듈이 실행되지 않았습니다. 브라우저 개발자도구 Console 또는 GitHub Actions 배포 로그를 확인해 주세요.</p></main>';
+      }
+    }, 8000);
+  </script>
+  <script type="module" src="./src/main.js?v=2.0.3"></script>
+</body>
+</html>

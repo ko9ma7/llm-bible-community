@@ -1,0 +1,21 @@
+LLM Bible v2.0.3
+
+Fixes:
+  Uncaught TypeError: Cannot read properties of undefined (reading 'slice')
+
+Cause:
+- public/data/knowledge.js exposed the corpus as `entries`
+- src/main.js expected `knowledge` and called curated.knowledge.slice(...)
+
+Changes:
+- canonical static data key is now `knowledge`
+- the UI accepts both `knowledge` and legacy `entries` so older cached data remains compatible
+- npm run check validates the static corpus contract before deployment
+- deployed CSS/data/JS URLs use ?v=2.0.3 to bypass stale browser/GitHub Pages caches
+- github-bootstrap.cmd now pauses after a successful run so the window does not disappear immediately
+
+Deploy:
+1. Overwrite the existing project with this patch/full package.
+2. Run redeploy-pages.cmd.
+3. Wait for GitHub Actions -> Deploy LLM Bible to GitHub Pages to turn green.
+4. Open https://ko9ma7.github.io/llm-bible-community/#/home

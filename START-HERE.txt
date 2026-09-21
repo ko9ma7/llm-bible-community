@@ -1,0 +1,19 @@
+LLM Bible Community v2.0
+
+1) Backend 설정
+   - .env.example -> .env
+   - Supabase URL / Publishable Key 입력
+   - backend-bootstrap.cmd 실행
+
+2) 로컬 테스트
+   npm install
+   npm run dev
+
+3) GitHub + Pages 자동 배포
+   github-bootstrap.cmd
+
+4) 관리자
+   사이트 주소 + #/admin
+   예: https://USERNAME.github.io/llm-bible-community/#/admin
+
+상세 내용: README.md / ADMIN_SETUP.md / SECURITY.md
